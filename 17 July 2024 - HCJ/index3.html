@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Eligibility Check</title>
+    <style>
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Job Eligibility Check</h2>
+    <form id="eligibilityForm">
+        <label>
+            <input type="radio" name="education" value="Highschool"> Highschool
+        </label><br>
+        <label>
+            <input type="radio" name="education" value="Illiterate"> Illiterate
+        </label><br>
+        <label>
+            <input type="radio" name="education" value="UG"> UG
+        </label><br>
+        <label>
+            <input type="radio" name="education" value="PG"> PG
+        </label><br>
+        <label>
+            <input type="radio" name="education" value="Doctorate"> Doctorate
+        </label><br>
+        <button type="button" onclick="checkEligibility()">Check Eligibility</button>
+    </form>
+    <div id="result" class="result"></div>
+
+    <script>
+        function checkEligibility() {
+            const educationLevels = document.getElementsByName('education');
+            let selectedLevel = '';
+            for (const level of educationLevels) {
+                if (level.checked) {
+                    selectedLevel = level.value;
+                    break;
+                }
+            }
+
+            const result = document.getElementById('result');
+            if (selectedLevel === 'Highschool' || selectedLevel === 'UG') {
+                result.textContent = 'Job Eligible';
+                result.style.color = 'green';
+            } else {
+                result.textContent = 'Not Eligible for Job';
+                result.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
